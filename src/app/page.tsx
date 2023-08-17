@@ -1,10 +1,9 @@
-import GitHubUserSearch from "@/components/GitHubUserSearch/GitHubUserSearch";
-import Title from "@/components/Title/Title";
+import GitHubUserSearch from '@/components/GitHubUserSearch/GitHubUserSearch'
 
 export default function Home() {
   return (
     <>
-    <GitHubUserSearch/>
+      <GitHubUserSearch />
     </>
   )
 }
