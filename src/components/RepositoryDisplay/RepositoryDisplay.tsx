@@ -14,7 +14,12 @@ export default function RepositoryDisplay({
           <p className="text-sm text-zinc-600">
             {repository.language} updated at: {repository.updated_at}
           </p>
-          <p>{repository.description}</p>
+          {repository.description && (
+            <div className="w-10/12 bg-zinc-300 rounded-lg p-2 mt-2">
+              Description
+              <p className="text-xs">{repository.description}</p>
+            </div>
+          )}
           <p className="absolute top-2 right-2 text-sm text-zinc-600">
             {' '}
             Data de criação: {repository.created_at}

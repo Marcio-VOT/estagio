@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-br">
       <body className={`${inter.className} flex-1 bg-neutral-50 text-zinc-800`}>
         <Title />
-        <div className="bg-zinc-200 max-w-2xl my-4 sm:mx-auto sm:w-11/12 sm:rounded-lg p-4 shadow-2xl">
+        <div className="bg-zinc-200 max-w-2xl mt-4 sm:mx-auto sm:w-11/12 sm:rounded-lg p-6 shadow-2xl relative">
+          <div className="p-2 bg-zinc-200 rounded-se-lg sm:rounded-lg w-fit absolute bottom-3/4 left-0">
+            <Link href={'/search/history'}>History</Link>
+          </div>
           {children}
         </div>
       </body>
