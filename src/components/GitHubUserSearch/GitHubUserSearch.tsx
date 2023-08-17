@@ -1,26 +1,30 @@
 'use client'
-import { User } from '@/protocols'
+import { Repository, User } from '@/protocols'
 import axios from 'axios'
 import { useState } from 'react'
 import UserDisplay from '../UserDisplay/UserDisplay'
-import UserFullDisplay from '../UserDisplay/UserFullDisplay'
+import RepositoryDisplay from '../RepositoryDisplay/RepositoryDisplay'
 
 export default function GitHubUserSearch() {
   const [user, setUser] = useState<undefined | User>(undefined)
   const [userName, setUserName] = useState<string>('')
-
+  const [temp, setTemp] = useState<Repository[] | undefined>(undefined)
   async function getUserData() {
     try {
       const { data: responseUser } = await axios.get<User>(
         `https://api.github.com/users/${userName}`,
       )
-      console.log('tudo ok ', responseUser)
+      const { data: reposData } = await axios.get<Repository[]>(
+        responseUser.repos_url,
+      )
+      setTemp(reposData)
+      console.log(reposData)
       setUser(responseUser)
       setUserName('')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setUser(undefined)
-      console.log('tudo não ok ', error.message)
+      alert(error.message)
     }
   }
 
@@ -43,7 +47,9 @@ export default function GitHubUserSearch() {
           search
         </button>
       </div>
-      {user && <UserFullDisplay user={user} />}
+      {user && <UserDisplay user={user} />}
+      {temp &&
+        temp.map((rep) => <RepositoryDisplay key={rep.id} repository={rep} />)}
     </>
   )
 }

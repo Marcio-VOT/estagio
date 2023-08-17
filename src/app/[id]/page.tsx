@@ -1,3 +1,4 @@
+import RepositoryDisplay from '@/components/RepositoryDisplay/RepositoryDisplay'
 import UserFullDisplay from '@/components/UserDisplay/UserFullDisplay'
 import { Repository, User } from '@/protocols'
 import axios from 'axios'
@@ -29,9 +30,8 @@ export default async function Page({
   return (
     <>
       <UserFullDisplay user={user} />
-      <h1>{user.id}</h1>
       {repos.map((repo) => (
-        <p key={repo.id}>{repo.full_name}</p>
+        <RepositoryDisplay key={repo.id} repository={repo} />
       ))}
     </>
   )
