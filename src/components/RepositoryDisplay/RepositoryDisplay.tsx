@@ -9,7 +9,7 @@ export default function RepositoryDisplay({
   return (
     <>
       <Link href={repository.html_url}>
-        <div className="w-full relative my-4 rounded-lg shadow-lg hover:shadow-2xl p-6 bg-zinc-100">
+        <div className="w-full relative my-4 rounded-lg shadow-lg hover:shadow-2xl p-6 bg-zinc-200">
           <p className="text-lg">{repository.name}</p>
           <p className="text-sm text-zinc-600">
             {repository.language} updated at: {repository.updated_at}

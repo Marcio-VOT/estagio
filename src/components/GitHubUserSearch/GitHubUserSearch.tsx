@@ -3,12 +3,12 @@ import { Repository, User } from '@/protocols'
 import axios from 'axios'
 import { useState } from 'react'
 import UserDisplay from '../UserDisplay/UserDisplay'
-import RepositoryDisplay from '../RepositoryDisplay/RepositoryDisplay'
+// import RepositoryDisplay from '../RepositoryDisplay/RepositoryDisplay'
 
 export default function GitHubUserSearch() {
   const [user, setUser] = useState<undefined | User>(undefined)
   const [userName, setUserName] = useState<string>('')
-  const [temp, setTemp] = useState<Repository[] | undefined>(undefined)
+  // const [temp, setTemp] = useState<Repository[] | undefined>(undefined)
   async function getUserData() {
     try {
       const { data: responseUser } = await axios.get<User>(
@@ -17,14 +17,13 @@ export default function GitHubUserSearch() {
       const { data: reposData } = await axios.get<Repository[]>(
         responseUser.repos_url,
       )
-      setTemp(reposData)
+      // setTemp(reposData)
       console.log(reposData)
       setUser(responseUser)
       setUserName('')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+    } catch (_e) {
       setUser(undefined)
-      alert(error.message)
+      alert('User Not Find')
     }
   }
 
@@ -48,8 +47,15 @@ export default function GitHubUserSearch() {
         </button>
       </div>
       {user && <UserDisplay user={user} />}
-      {temp &&
-        temp.map((rep) => <RepositoryDisplay key={rep.id} repository={rep} />)}
+      {/* <div className="w-full">
+        <h1 className="w-full rounded-full text-lg bg-zinc-50 text-center py-2">
+          Repositories
+        </h1>
+        {temp &&
+          temp.map((rep) => (
+            <RepositoryDisplay key={rep.id} repository={rep} />
+          ))}
+      </div> */}
     </>
   )
 }

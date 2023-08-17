@@ -30,9 +30,14 @@ export default async function Page({
   return (
     <>
       <UserFullDisplay user={user} />
-      {repos.map((repo) => (
-        <RepositoryDisplay key={repo.id} repository={repo} />
-      ))}
+      <div className="w-full">
+        <h1 className="w-full rounded-full text-lg bg-zinc-50 text-center py-2">
+          Repositories
+        </h1>
+        {repos.map((repo) => (
+          <RepositoryDisplay key={repo.id} repository={repo} />
+        ))}
+      </div>
     </>
   )
 }
