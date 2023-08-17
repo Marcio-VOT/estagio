@@ -7,6 +7,7 @@ export type User = {
   followers: number
   public_repos: number
   repos_url: string
+  html_url: string
 }
 
 export type Repository = {

@@ -1,3 +1,4 @@
+import UserFullDisplay from '@/components/UserDisplay/UserFullDisplay'
 import { Repository, User } from '@/protocols'
 import axios from 'axios'
 import { RedirectType } from 'next/dist/client/components/redirect'
@@ -22,10 +23,12 @@ export default async function Page({
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
+    console.log(error.message)
     redirect('/', RedirectType.push)
   }
   return (
     <>
+      <UserFullDisplay user={user} />
       <h1>{user.id}</h1>
       {repos.map((repo) => (
         <p key={repo.id}>{repo.full_name}</p>

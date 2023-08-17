@@ -3,6 +3,7 @@ import { User } from '@/protocols'
 import axios from 'axios'
 import { useState } from 'react'
 import UserDisplay from '../UserDisplay/UserDisplay'
+import UserFullDisplay from '../UserDisplay/UserFullDisplay'
 
 export default function GitHubUserSearch() {
   const [user, setUser] = useState<undefined | User>(undefined)
@@ -42,7 +43,7 @@ export default function GitHubUserSearch() {
           search
         </button>
       </div>
-      {user && <UserDisplay user={user} />}
+      {user && <UserFullDisplay user={user} />}
     </>
   )
 }
