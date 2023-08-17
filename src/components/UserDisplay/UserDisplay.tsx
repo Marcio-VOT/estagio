@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function UserDisplay({ user }: { user: User }) {
   return (
     <>
-      <Link href={user.login}>
+      <Link href={`/${user.login}`}>
         <div className="w-full relative my-4 rounded-lg shadow-lg hover:shadow-2xl p-4 bg-zinc-100">
           <div className="flex flex-wrap ">
             <Image
