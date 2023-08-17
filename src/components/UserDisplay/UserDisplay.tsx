@@ -1,27 +1,28 @@
 import { User } from '@/protocols'
 import Image from 'next/image'
-import YSeparator from '../YSeparator/YSeparator'
+import Link from 'next/link'
 
 export default function UserDisplay({ user }: { user: User }) {
   return (
     <>
-      <YSeparator />
-      <div className="w-full relative m-4">
-        <div className="flex flex-wrap w-full">
-          <Image
-            src={user.avatar_url}
-            alt="user avatar"
-            width={40}
-            height={40}
-          />
-          <div>
-            <p>{user.name}</p>
-            <p>{user.login}</p>
+      <Link href={user.login}>
+        <div className="w-full relative my-4 rounded-lg shadow-lg hover:shadow-2xl p-4 bg-zinc-100">
+          <div className="flex flex-wrap ">
+            <Image
+              src={user.avatar_url}
+              alt="user avatar"
+              width={80}
+              height={80}
+              className="rounded-full mr-2"
+            />
+            <div className="mt-1">
+              <p className="text-xl">{user.name}</p>
+              <p className=" text-zinc-600">{user.login}</p>
+            </div>
           </div>
+          <p className="absolute bottom-2 right-2">{user.location}</p>
         </div>
-        <p className="absolute bottom-2 right-2">{user.location}</p>
-      </div>
-      <YSeparator />
+      </Link>
     </>
   )
 }

@@ -2,6 +2,7 @@ import Title from '@/components/Title/Title'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,18 +11,12 @@ export const metadata: Metadata = {
   description: 'created by Marcio-VOT',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
-      <body
-        className={`${inter.className} flex-1 bg-neutral-900 text-zinc-200 `}
-      >
+      <body className={`${inter.className} flex-1 bg-neutral-50 text-zinc-800`}>
         <Title />
-        <div className="bg-[#22272E] max-w-2xl border-y-[1px] sm:border-[1px] border-gray-600 my-4 sm:mx-auto sm:w-11/12 sm:rounded-lg p-4">
+        <div className="bg-zinc-200 max-w-2xl my-4 sm:mx-auto sm:w-11/12 sm:rounded-lg p-4 shadow-2xl">
           {children}
         </div>
       </body>
